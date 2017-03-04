@@ -1,9 +1,16 @@
 package com.sdaacademy.jawny.daniel.basicaccessauthentication;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,8 +24,11 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.password)
     EditText mPassword;
 
-    @BindView(R.id.response)
-    TextView mResponse;
+    @BindView(R.id.user_id)
+    TextView mUserId;
+
+    @BindView(R.id.avatar)
+    ImageView mAvatar;
 
     private GetGitHubInfoTask getGitHubInfoTask;
 
@@ -40,6 +50,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayResponse(String text) {
-        mResponse.setText(text);
+        try {
+            JSONObject jsonObject = new JSONObject(text);
+//            mUserId.setText(jsonObject.optString());
+//            Picasso.with(this).load(url).into(mAvatar);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
+
+    public void showError(String message) {
+        new AlertDialog.Builder(this)
+                .setMessage(message)
+                .setPositiveButton("Ok", null)
+                .show();
+    }
+
 }

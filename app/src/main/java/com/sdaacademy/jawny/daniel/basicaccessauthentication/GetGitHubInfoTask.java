@@ -24,8 +24,6 @@ public class GetGitHubInfoTask extends AsyncTask<String, Integer, String> {
         String key = getKey(params[0], params[1]);
         try {
             response = sentRequest(key);
-        } catch (JSONException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,7 +38,7 @@ public class GetGitHubInfoTask extends AsyncTask<String, Integer, String> {
         }
     }
 
-    private String sentRequest(String key) throws JSONException, IOException {
+    private String sentRequest(String key) throws IOException {
         Request request = new Request.Builder()
                 .addHeader("Authorization", "Basic " + key)
                 .url("https://api.github.com/user")
