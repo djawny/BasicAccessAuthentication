@@ -52,13 +52,11 @@ public class MainActivity extends AppCompatActivity {
     public void displayResponse(String text) {
         try {
             JSONObject jsonObject = new JSONObject(text);
-//            mUserId.setText(jsonObject.optString());
-//            Picasso.with(this).load(url).into(mAvatar);
+            mUserId.setText(jsonObject.optString("id"));
+            Picasso.with(this).load(jsonObject.optString("avatar_url")).into(mAvatar);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void showError(String message) {
@@ -67,5 +65,4 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("Ok", null)
                 .show();
     }
-
 }
