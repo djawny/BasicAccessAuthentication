@@ -52,9 +52,18 @@ public class MainActivity extends AppCompatActivity {
     public void displayResponse(String text) {
         try {
             JSONObject jsonObject = new JSONObject(text);
-            mUserId.setText(jsonObject.optString("id"));
-            Picasso.with(this).load(jsonObject.optString("avatar_url")).into(mAvatar);
+            String id = jsonObject.optString("id");
+            if (!id.isEmpty()) {
+                mUserId.setText("ID: " + id);
+                String url = jsonObject.optString("avatar_url");
+                if (!url.isEmpty()) {
+                    Picasso.with(this).load(url).into(mAvatar);
+                }
+            }else {
+                showError("Blad logowania");
+            }
         } catch (JSONException e) {
+            showError("Blad json");
             e.printStackTrace();
         }
     }

@@ -18,13 +18,20 @@ public class GetGitHubInfoTask extends AsyncTask<String, Integer, String> {
         this.mainActivity = mainActivity;
     }
 
+    private boolean success;
+
     @Override
     protected String doInBackground(String... params) {
         String response = "";
         String key = getKey(params[0], params[1]);
         try {
             response = sentRequest(key);
+            success = true;
         } catch (IOException e) {
+            if (mainActivity != null) {
+                mainActivity.showError("Blad połączenia");
+                success = false;
+            }
             e.printStackTrace();
         }
         return response;
@@ -33,7 +40,7 @@ public class GetGitHubInfoTask extends AsyncTask<String, Integer, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        if (mainActivity != null) {
+        if (mainActivity != null && success) {
             mainActivity.displayResponse(s);
         }
     }
