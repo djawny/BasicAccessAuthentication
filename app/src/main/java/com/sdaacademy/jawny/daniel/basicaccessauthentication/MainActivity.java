@@ -1,8 +1,10 @@
 package com.sdaacademy.jawny.daniel.basicaccessauthentication;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.password)
     EditText mPassword;
+
+    @BindView(R.id.response)
+    TextView mResponse;
 
     private GetGithubInfoTask getGithubInfoTask;
 
@@ -30,13 +35,20 @@ public class MainActivity extends AppCompatActivity {
     public void logon() {
         String login = mLogin.getText().toString();
         String password = mPassword.getText().toString();
-                getGithubInfoTask = new GetGithubInfoTask();
+        getGithubInfoTask = new GetGithubInfoTask();
         getGithubInfoTask.setMainActivity(MainActivity.this);
-        getGithubInfoTask.execute(login,password);
+        getGithubInfoTask.execute(login, password);
     }
 
-    public void displayResponse(String text){
+    public void displayResponse(String text) {
+        mResponse.setText(text);
+    }
 
+    public void showError(String message) {
+        new AlertDialog.Builder(this)
+                .setMessage(message)
+                .setPositiveButton("Ok", null)
+                .show();
     }
 
 }

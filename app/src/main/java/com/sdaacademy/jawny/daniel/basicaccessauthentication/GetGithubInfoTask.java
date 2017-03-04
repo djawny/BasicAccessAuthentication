@@ -20,7 +20,7 @@ public class GetGithubInfoTask extends AsyncTask<String, Integer, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String response="";
+        String response = "";
         String key = getKey(params[0], params[1]);
         try {
             response = sentRequest(key);
@@ -35,7 +35,9 @@ public class GetGithubInfoTask extends AsyncTask<String, Integer, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        mainActivity.displayResponse(s);
+        if (mainActivity != null) {
+            mainActivity.displayResponse(s);
+        }
     }
 
     private String sentRequest(String key) throws JSONException, IOException {
