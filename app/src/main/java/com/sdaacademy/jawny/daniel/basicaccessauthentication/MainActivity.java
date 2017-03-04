@@ -1,7 +1,6 @@
 package com.sdaacademy.jawny.daniel.basicaccessauthentication;
 
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -43,12 +42,4 @@ public class MainActivity extends AppCompatActivity {
     public void displayResponse(String text) {
         mResponse.setText(text);
     }
-
-    public void showError(String message) {
-        new AlertDialog.Builder(this)
-                .setMessage(message)
-                .setPositiveButton("Ok", null)
-                .show();
-    }
-
 }
