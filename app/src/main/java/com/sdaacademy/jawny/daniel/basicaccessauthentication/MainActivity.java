@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.response)
     TextView mResponse;
 
-    private GetGithubInfoTask getGithubInfoTask;
+    private GetGitHubInfoTask getGitHubInfoTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
     public void logon() {
         String login = mLogin.getText().toString();
         String password = mPassword.getText().toString();
-        getGithubInfoTask = new GetGithubInfoTask();
-        getGithubInfoTask.setMainActivity(MainActivity.this);
-        getGithubInfoTask.execute(login, password);
+        getGitHubInfoTask = new GetGitHubInfoTask();
+        getGitHubInfoTask.setMainActivity(MainActivity.this);
+        getGitHubInfoTask.execute(login, password);
     }
 
     public void displayResponse(String text) {

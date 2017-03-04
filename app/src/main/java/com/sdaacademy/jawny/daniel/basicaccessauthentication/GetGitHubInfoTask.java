@@ -10,7 +10,7 @@ import java.io.IOException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
-public class GetGithubInfoTask extends AsyncTask<String, Integer, String> {
+public class GetGitHubInfoTask extends AsyncTask<String, Integer, String> {
 
     private MainActivity mainActivity;
 

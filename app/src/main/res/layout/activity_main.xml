@@ -30,10 +30,15 @@
         android:layout_gravity="center"
         android:text="Zaloguj" />
 
-    <TextView
-        android:id="@+id/response"
-        android:layout_marginTop="10dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/response"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp" />
+    </ScrollView>
 
 </LinearLayout>
